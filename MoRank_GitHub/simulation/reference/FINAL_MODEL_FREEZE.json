@@ -1,0 +1,38 @@
+{
+  "status": "FROZEN_BEFORE_FINAL_AND_STRESS_RESULTS",
+  "frozen_at_utc": "2026-11-05T14:00:01.871999+00:00",
+  "selected_models": [
+    {
+      "family": "ClassicalStack",
+      "model": "ClassicalStack_d4_t400",
+      "max_depth": "4",
+      "nrounds": "400",
+      "validation_macro_AUC": "0.945783640510826"
+    },
+    {
+      "family": "WSKR_A",
+      "model": "WSKR_A_d4_t400",
+      "max_depth": "4",
+      "nrounds": "400",
+      "validation_macro_AUC": "0.960718017945412"
+    }
+  ],
+  "files": {
+    "redesign_core.R": "425c85b60ec59a7a2d2a4af2ec1ed89b2fb254134a85fe6fb3cd4870669ecd45",
+    "analysis_core.R": "866fe1a919203c5eaa0b76f6ba04bc3625fd5570b87448e836dccaa5af3b695e",
+    "simulate_pool_fast.R": "f4a3376e6821ad1f51d78f09cf6d0a61db5292456eae2f29a497df4896457cc7",
+    "original_simulation.R": "f3444326f8a11b55a2e39a009e9d1db70d2082037016d38f585226ac4eba1e72",
+    "model_io.R": "3e6252dcf790a6afdf112308a23a979c58249dc9b76e5462be2b3f3b52b15d62",
+    "run_final_benchmark.R": "df2bd68b22f02ca205fe9aaa263e22ecee1906253b8cf69455aa9b4cb50cd049",
+    "count_baselines.R": "5bd12733ed7a8b32c349bea88710041e9df7fa2944db2a78ef2a0eda6f1505ed",
+    "run_stress.R": "579a512d808989746aef96f35094b637b6e6d48e494a93c995f5978995ea510d",
+    "models/frozen_selection.rds": "348c03e28923402fe0f3494b92902bb3af335a695a15a5db6a5c87502a768270",
+    "models/ClassicalStack_d4_t400.json": "afd15ae4a478d8090d8de9a3106a638090a9978c1c50791856f5c43122f5ed47",
+    "models/ClassicalStack_d4_t400_spec.rds": "dc429ca918c0b4246f004d9796617643dad755fe66165d66d717f52e4989df46",
+    "models/WSKR_A_d4_t400.json": "d6e8d8b385737bedf1881926422b9beb710340772c5c7975a20b8117007a24ba",
+    "models/WSKR_A_d4_t400_spec.rds": "c7018b0d7488443138861004eb06d72b9b16e3c78a18cf4080b3f1472ccb808b"
+  },
+  "plan_sha256": "bd201a5a82ba0d89bb983ce3eb5274a66f4fdcf1d706eb2cfe00a7197326dbd1",
+  "scope": "User confirmed overall detection as primary; no final or stress data inspected or used for training or model selection",
+  "reproduction_two_independent_processes": true
+}

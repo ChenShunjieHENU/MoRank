@@ -1,0 +1,27 @@
+paired_stats<-function(M,B=5000L,seed=20261106L){
+ M<-as.matrix(M);n<-ncol(M);G<-nrow(M)
+ out<-data.frame(mean_delta=rep(NA_real_,G),ci_low=NA_real_,ci_high=NA_real_,p=NA_real_,n_pairs=n,
+   loo_min=NA_real_,loo_max=NA_real_,loo_direction_fraction=NA_real_)
+ valid<-rowSums(is.finite(M))==n
+ if(n<5||!any(valid))return(out)
+ stopifnot(n<=15)
+ D<-M[valid,,drop=FALSE]
+ S<-t(as.matrix(expand.grid(rep(list(c(-1,1)),n))))
+ obs<-rowMeans(D);T<-D%*%S/n
+ pp<-rowMeans(abs(T)>=abs(obs)-1e-12)
+ set.seed(seed);idx<-matrix(sample.int(n,n*B,replace=TRUE),nrow=n)
+ W<-vapply(seq_len(B),function(b)tabulate(idx[,b],nbins=n)/n,numeric(n))
+ BB<-D%*%W;QQ<-t(apply(BB,1,quantile,probs=c(.025,.975),names=FALSE))
+ loo<-(rowSums(D)-D)/(n-1)
+ frac<-rowMeans(sign(loo)==sign(obs));frac[obs==0]<-NA_real_
+ out[valid,]<-data.frame(mean_delta=obs,ci_low=QQ[,1],ci_high=QQ[,2],p=pp,n_pairs=n,
+   loo_min=apply(loo,1,min),loo_max=apply(loo,1,max),loo_direction_fraction=frac)
+ out
+}
+spearman_perm<-function(x,y,B=9999L,seed=20261106L){
+ ok<-is.finite(x)&is.finite(y);x<-x[ok];y<-y[ok];n<-length(x)
+ if(n<5||length(unique(x))<2||length(unique(y))<2)return(c(rho=NA_real_,p=NA_real_,n=n))
+ rx<-rank(x);ry<-rank(y);rho<-cor(rx,ry);set.seed(seed)
+ rr<-replicate(B,cor(rx,sample(ry)))
+ c(rho=rho,p=(1+sum(abs(rr)>=abs(rho)-1e-12))/(B+1),n=n)
+}

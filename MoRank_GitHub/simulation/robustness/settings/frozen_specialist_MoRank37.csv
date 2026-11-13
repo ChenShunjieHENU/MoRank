@@ -1,0 +1,2 @@
+model,depth,rounds,weight,NB,Sensitivity,min_gain,avg_gain,family
+MoRank37_NB_d6_t750,6,750,0.75,0.966066307397445,0.883008723108327,0.00270814654188123,0.00662522205096161,MoRank37

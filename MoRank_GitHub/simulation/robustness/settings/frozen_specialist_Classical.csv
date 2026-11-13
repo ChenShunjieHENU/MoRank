@@ -1,0 +1,2 @@
+model,depth,rounds,weight,NB,Sensitivity,min_gain,avg_gain,family
+Classical_NB_d6_t750,6,750,0.75,0.949181368623066,0.835914106731796,0.00153355047314896,0.00238867924696595,Classical
